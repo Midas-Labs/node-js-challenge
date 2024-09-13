@@ -1,0 +1,29 @@
+<%- include('partials/navbar') %>
+
+  <!-- Title Section -->
+  <h1 class="gallery-title">Explore the Latest Images</h1>
+
+  <!-- Gallery Section -->
+  <div class="gallery">
+    <% images.forEach(function(image) { %>
+      <a href="/images/<%= image.shortUrl %>/details">
+        <img class="gallery-item" src="<%= image.url %>" alt="Image" />
+      </a>
+    <% }) %>
+  </div>
+
+  <!-- Pagination Section -->
+  <div class="pagination">
+    <% if (currentPage > 1) { %>
+      <a href="/?page=<%= currentPage - 1 %>">Previous</a>
+    <% } %>
+
+    <% for (let i = 1; i <= totalPages; i++) { %>
+      <a href="/?page=<%= i %>" <% if (i === currentPage) { %> style="font-weight: bold;" <% } %>><%= i %></a>
+    <% } %>
+
+    <% if (currentPage < totalPages) { %>
+      <a href="/?page=<%= currentPage + 1 %>">Next</a>
+    <% } %>
+  </div>
+
