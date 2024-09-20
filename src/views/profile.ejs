@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+.header {
+  background-color: transparent;
+  color: black;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-family: monospace;
+  font-size: 4em;
+}
+
+.logout-btn {
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: none;
+  background-color: slategray;
+  border-radius: 4px;
+}
+
+.logout-btn:hover {
+  background-color: #c9302c;
+}
+
+.container {
+  margin-top: 20px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section {
+  margin-bottom: 20px;
+}
+
+.upload-section h2 {
+  margin-top: 0;
+}
+
+input[type="file"] {
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #5bc0de;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #31b0d5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.grid div {
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <h1>Welcome</h1>
+    <a href="/logout" class="logout-btn">Log Out</a>
+  </header>
+
+  <div class="container">
+    <div class="upload-section">
+      <h2>Gallery</h2>
+      <!-- <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="profileImage" accept="image/*" required>
+        <button type="submit">Upload</button>
+      </form> -->
+      <form id="uploadForm" enctyoe="multipart/form-data">
+        <input type="file" id="fileInput" name="file" />
+        <button type="button" onclick="uploadFile()">Upload</button>
+      </form>
+    </div>
+
+    <div class="grid">
+      <% images.forEach(function(imageUrl) { %>
+        <div>
+          <img src="<%= imageUrl %>" alt="S3 Image">
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <script>
+    async function uploadFile() {
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+      const userId = '<%= user.auth0Id %>';
+
+      if (!file) {
+        alert('Please select a file to upload')
+        return;
+      }
+      console.log(file);
+      const query = `
+        mutation($userId: String!, $file: Upload!) {
+          upload( userId: $userId, file: $file ) {
+            url
+          }
+        }
+      `;
+      // const variables = { userId, file };
+
+      const operations = JSON.stringify({
+        query,
+        variables: {
+          userId: userId,
+          file: null
+        },
+      });
+
+      const map = JSON.stringify({
+        '0': ['variables.file'],
+      });
+
+      const body = new FormData();
+      body.append('operations', operations);
+      body.append('map', map);
+      body.append('0', file);
+
+
+      try {
+        const response = await fetch('/graphql', {
+          method: 'POST',
+          headers: {
+                'x-apollo-operation-name': 'uploadFile',
+                // You can add more headers as needed
+            },
+          body: body,
+        }).then();
+        const { data } = await response.json();
+        console.log("File uploaded successfully:", response)
+      } catch (error) {
+        console.error("Error uploading file:", error)
+      }
+    }
+
+    function updateImageGrid(images) {
+  const grid = document.querySelector('.grid');
+  grid.innerHTML = ''; // Clear the existing images
+
+  images.forEach(imageUrl => {
+    const imgDiv = document.createElement('div');
+    const imgElement = document.createElement('img');
+    imgElement.src = imageUrl;
+    imgElement.alt = 'S3 Image';
+    imgDiv.appendChild(imgElement);
+    grid.appendChild(imgDiv);
+  });
+}
+  </script>
+</body>
+
+</html>
