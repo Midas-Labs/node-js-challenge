@@ -1,16 +1,17 @@
 import express from "express"
 import { AppDataSource } from "./data-source"
-import { graphqlHTTP } from "express-graphql"
 import path from "path"
 import { auth, requiresAuth } from 'express-openid-connect';
 import { auth0Config } from './Authentication/Auth0Service';
-import { schema } from './ApiService/Schema';
 import { resolvers } from './ApiService/Resolvers';
 import { UserController } from "./controller/UserController";
 import { ApolloServer, gql } from "apollo-server-express";
 import { readFileSync } from "fs";
 import { graphqlUploadExpress } from "graphql-upload-ts"; 
 import { ImageController } from "./controller/ImageController";
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 AppDataSource.initialize().then(async () => {
 
@@ -75,7 +76,7 @@ AppDataSource.initialize().then(async () => {
 
 
 
-  app.listen(3000, () => console.log(`Node Graphql API listening on port 3000!. Open http://localhost:3000/ to see results`));
+  app.listen(process.env.PORT, () => console.log(`Node Graphql API listening on port 3000!. Open http://localhost:3000/ to see results`));
 
 
 }).catch(error => console.log(error))
