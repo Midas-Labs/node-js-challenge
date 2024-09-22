@@ -11,6 +11,7 @@ import { graphqlUploadExpress } from "graphql-upload-ts";
 import { ImageController } from "./controller/ImageController";
 import * as dotenv from 'dotenv'
 
+
 dotenv.config()
 
 AppDataSource.initialize().then(async () => {
