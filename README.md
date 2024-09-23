@@ -59,22 +59,22 @@ This will install all the dependencies
 ##  Environment Variables
 Below is a list of all required environment variables for SnapGrid:
 
--DB_TYPE: The type of Database used (in our case postgres)
--DB_HOST: The host of your Postgres database (e.g., localhost).
--DB_PORT: The port number for Postgres (default is 5432).
--DB_USERNAME: The username for your Postgres database.
--DB_PASSWORD: The password for your Postgres user.
--DB_DATABASE: The name of the Postgres database.
--AWS_ACCESS_KEY_ID: Your AWS access key for accessing S3.
--AWS_SECRET_ACCESS_KEY: Your AWS secret access key.
--S3_BUCKET_NAME: The name of the AWS S3 bucket to store images.
--S3_REGION: The AWS region where your S3 bucket is located.
--PORT: The port on which the application will run (default is 3000).
--AUTH0_SECRET: Secret key for encrypting cookies and sessions.
--AUTH0_BASEURL: The base URL of your application for Auth0 redirects.
--AUTH0_CLIENTID: Public identifier for your Auth0 application.
--AUTH0_CLIENTSECRET: Confidential key for app authentication -with Auth0.
--AUTH0_ISSUERBASEURL: URL of your Auth0 tenant for token validation.
+- DB_TYPE: The type of Database used (in our case postgres)
+- DB_HOST: The host of your Postgres database (e.g., localhost).
+- DB_PORT: The port number for Postgres (default is 5432).
+- DB_USERNAME: The username for your Postgres database.
+- DB_PASSWORD: The password for your Postgres user.
+- DB_DATABASE: The name of the Postgres database.
+- AWS_ACCESS_KEY_ID: Your AWS access key for accessing S3.
+- AWS_SECRET_ACCESS_KEY: Your AWS secret access key.
+- S3_BUCKET_NAME: The name of the AWS S3 bucket to store images.
+- S3_REGION: The AWS region where your S3 bucket is located.
+- PORT: The port on which the application will run (default is 3000).
+- AUTH0_SECRET: Secret key for encrypting cookies and sessions.
+- AUTH0_BASEURL: The base URL of your application for Auth0 redirects.
+- AUTH0_CLIENTID: Public identifier for your Auth0 application.
+- AUTH0_CLIENTSECRET: Confidential key for app authentication -with Auth0.
+- AUTH0_ISSUERBASEURL: URL of your Auth0 tenant for token validation.
 
 
 ## API Documentation
