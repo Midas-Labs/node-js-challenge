@@ -120,37 +120,35 @@ Returns:
 File!: The uploaded file object with its URL.
 
 ### Resolvers
-####saveUser Resolver
+#### saveUser Resolver
 Handles the saveUser mutation to save a new user.
 
--Arguments:
+Arguments:
 name (String!): The name of the user.
 email (String!): The email of the user.
 auth0Id (String!): The Auth0 ID of the user.
 picture (String): The picture URL of the user (optional).
--Returns:
+Returns:
 User: The saved user object.
 
-####upload Resolver
+#### upload Resolver
 Handles the upload mutation to upload a file for a specific user.
 
--Arguments:
+Arguments:
 userId (String!): The ID of the user.
 file (Upload!): The file to be uploaded.
--Returns:
+Returns:
 File!: The uploaded file object with its URL.
 
-
-##Usage
+## Usage
 Once the application is up and running, you can:
 
--Create a new user by signing up via the GraphQL API.
--Upload an image as a user, which will be saved to AWS S3. Fetch and display the images saved.
--Query user data or mutate (update/delete) user data via the GraphQL playground at /graphql.
-To interact with the API, visit http://localhost:4000/graphql to use the built-in GraphQL Playground.
+- Create a new user by signing up via the GraphQL API.
+- Upload an image as a user, which will be saved to AWS S3. Fetch and display the images saved.
+- Query user data or mutate (update/delete) user data via the GraphQL playground at /graphql.
 
-##Scripts
--npm run start: Starts the application in production mode.
--npm run dev: Starts the application in development mode with hot-reloading.
--npm run build: Compiles TypeScript files into JavaScript for production.
+## Scripts
+- npm run start: Starts the application in production mode.
+- npm run dev: Starts the application in development mode with hot-reloading.
+- npm run build: Compiles TypeScript files into JavaScript for production.
 
