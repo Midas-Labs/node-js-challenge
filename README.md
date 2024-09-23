@@ -1,6 +1,8 @@
 # SnapGrid
 
-SnapGrid is a full-stack application built with modern technologies for managing user data and uploading images. It leverages a Node.js backend with TypeScript, GraphQL for querying data, TypeORM for database interactions with Postgres, and AWS S3 for image storage.
+SnapGrid is a full-stack application built with modern technologies for managing user data and uploading images. It leverages a Node.js backend with TypeScript, GraphQL for querying data, TypeORM for database interactions with Postgres, AWS S3 for image storage and AWS ECS for container orchestration.
+
+Here is the demo of [SnapGrid](http://18.221.70.181:3000/)
 
 ## Table of Contents
 
