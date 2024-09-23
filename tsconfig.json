@@ -4,6 +4,7 @@
          "es5",
          "es6"
       ],
+      "types": ["node"],
       "target": "ES2016",
       "module": "commonjs",
       "moduleResolution": "node",

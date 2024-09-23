@@ -79,21 +79,26 @@ button:hover {
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust columns to fit the container */
+    gap: 10px; /* Space between the images */
+    max-height: 500px; /* Adjust as needed */
+    overflow-y: auto; /* Enables vertical scrolling */
+    padding: 10px;
+    border: 1px solid #ccc; /* Optional: Adds a border around the grid */
 }
 
 .grid div {
-  overflow: hidden;
-  border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .grid img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 4px;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensures images fit nicely in their divs */
+    border-radius: 8px; /* Optional: Adds rounded corners to the images */
 }
   </style>
 </head>

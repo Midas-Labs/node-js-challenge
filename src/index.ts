@@ -74,6 +74,11 @@ AppDataSource.initialize().then(async () => {
     }
   });
 
+//   app.get("/logo", (req, res) => {
+//   const streamReadFile = fs.createReadStream("/images/SnapgridLogo.png");
+//   streamReadFile.pipe(res);
+// });
+
 
 
   app.listen(process.env.PORT, () => console.log(`Node Graphql API listening on port 3000!. Open http://localhost:3000/ to see results`));
