@@ -45,7 +45,7 @@ Before setting up SnapGrid, ensure you have the following installed:
 
 ### 1. Clone the repository
 
-```bash
+
 git clone https://github.com/YHMounika/node-js-challenge.git
 cd snapgrid
 
