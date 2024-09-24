@@ -1,0 +1,18 @@
+type Query {
+  hello: String
+  user: User
+}
+type User {
+  name: String
+  email: String
+}
+type File {
+    url: String!
+}
+scalar Upload
+
+type Mutation {
+  saveUser(name: String!, email: String!): User
+  upload(userId: String!, file: Upload! ): File!
+}
+
