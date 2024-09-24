@@ -37,8 +37,6 @@ export const resolvers = {
                     ContentType: file.mimetype
                 };
                 const res = await s3.upload(params).promise();
-                console.log(`File: ${filename} uploaded successfully`);
-                console.log(res.Location)
                 let imageController = new ImageController();
                 await imageController.save(res.Location, userId)
                 return `Uploaded Location: ${res.Location}`;

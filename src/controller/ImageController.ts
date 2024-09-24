@@ -12,8 +12,6 @@ export class ImageController {
             user_AuthId,
 
         })
-        console.log('imgData')
-        console.log(imgData)
         this.imageRepository.save(imgData)
         return true;
     }

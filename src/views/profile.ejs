@@ -141,7 +141,6 @@ button:hover {
         alert('Please select a file to upload')
         return;
       }
-      console.log(file);
       const query = `
         mutation($userId: String!, $file: Upload!) {
           upload( userId: $userId, file: $file ) {

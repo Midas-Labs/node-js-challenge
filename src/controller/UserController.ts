@@ -15,8 +15,6 @@ export class UserController {
                 email_Id,
                 auth0Id
             })
-            console.log('user')
-            console.log(user)
             this.userRepository.save(user)
         }
         return user
